@@ -1,0 +1,59 @@
+<div class="wrapper-adapt" *ngIf="!loginDetected" adapt-focus-tracker>
+ <nav class="navbar navbar-toggleable-md navbar-light">
+    <div class="container d-flex justify-content-between pt-1 pb-2">
+      <div>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"> </span>
+        </button>
+        <a class="navbar-brand" href="https://github.bmc.com/bmc-ux/adapt-angular">
+          <h2 class="m-0 py-2"><span class="logo-bmc"></span>
+            <span>{{name}}</span>
+            <small class="text-muted ml-1">26 Sep 2017</small>
+          </h2>
+        </a>
+      </div>
+      <h4 class="m-0 py-3 hidden-lg-down">
+        Angular UI Components <small>(angular@v4.4.3)</small>
+      </h4>
+      <div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item" *ngFor="let item of routes">
+              <a style="font-size: 1.15rem;" *ngIf="item.name"
+                 routerLink="{{item.path}}"
+                 [routerLinkActive]="'active'"
+                 class="nav-link">{{item.name}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link py-2" href="https://github.bmc.com/bmc-ux"
+                 target="_blank">
+                <img src="https://s3.amazonaws.com/aws-uxd-cdn/docs/github-icon.png" width="42" height="40"/>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="btn-float-block button-for-rtl" >
+    <button type="button" placement="top" adaptTooltip="Show RTL" class="btn btn-info btn-circle d-icon-plus" (click)="showRtlDirection()" *ngIf="!showRtl"></button>
+  </div>
+
+</div>
+<style>
+  .carousel.slide:focus {
+    outline: none
+  }
+</style>
+
+
+<div [ngClass]="{'pb-5': !loginDetected}">
+  <router-outlet></router-outlet>
+</div>
+
+
+
+
